@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Script from "next/script"; // ✅ ต้องมีบรรทัดนี้เพื่อใช้ Script
+import Script from "next/script"; // ✅ เหลือบรรทัดนี้ไว้อันเดียวพอครับ
 import { CSPostHogProvider } from "./providers";
 
 const geistSans = Geist({
@@ -28,7 +28,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         
-        {/* 👇 นี่คือส่วนจากรูปที่คุณส่งมาครับ (Cookiebot) */}
+        {/* 👇 ส่วน Cookiebot (ถูกต้องแล้วครับ) */}
         <Script
           id="Cookiebot"
           src="https://consent.cookiebot.com/uc.js"
