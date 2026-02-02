@@ -7,11 +7,12 @@ async function main() {
   // สร้างสินค้าตัวอย่าง 1 ชิ้น
   const product = await prisma.product.create({
     data: {
-      title: 'เสื้อยืด Media For You รุ่น Limited',
-      description: 'เสื้อยืดผ้า Cotton 100% ใส่สบาย ออกแบบลายเองได้',
-      price: 590,
+      title: 'Premium Cotton T-Shirt | Limited Edition Custom Design Apparel',
+      slug: 'media-foryou-limited-shirt',
+      description: 'Discover our Limited Edition Premium Cotton T-Shirt–100% soft cotton, breathable comfort, and customizable design. Perfect for fashion lovers seeking exclusive apparel in 2026.',
+      price: 29,
       image: 'https://placehold.co/600x400/png', // รูปสมมติ
-      category: 'T-Shirt',
+      category: 'Apparel',
       stock: 100,
     },
   })
