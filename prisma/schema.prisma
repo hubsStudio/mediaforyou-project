@@ -1,0 +1,25 @@
+// prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+// เราเอาเหลือแค่ Product เพียวๆ ก่อน เพื่อให้ Sync ผ่านแน่นอน 100%
+model Product {
+  id          String   @id @default(uuid())
+  title       String
+  slug        String   @unique
+  description String?
+  price       Float    // มีราคาแล้ว
+  stock       Int      @default(0)
+  image       String?
+  category    String   // ใช้แบบง่ายไปก่อน
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
