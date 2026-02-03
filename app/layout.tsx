@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Script from "next/script"; // ✅ เหลือบรรทัดนี้ไว้อันเดียวพอครับ
+import Script from "next/script";
 import { CSPostHogProvider } from "./providers";
+import Navbar from "@/components/Navbar"; // 👈 นำเข้า Navbar ที่นี่
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,7 +29,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         
-        {/* 👇 ส่วน Cookiebot (ถูกต้องแล้วครับ) */}
+        {/* 1. ✅ Cookiebot (ถูกต้องแล้ว) */}
         <Script
           id="Cookiebot"
           src="https://consent.cookiebot.com/uc.js"
@@ -37,11 +38,17 @@ export default function RootLayout({
           data-blockingmode="auto"
           type="text/javascript"
         />
-        {/* 👆 จบส่วน Cookiebot */}
 
         <CSPostHogProvider>
-          {children}
+          {/* 2. ✅ ใส่ Navbar ไว้ตรงนี้ (ให้แสดงทุกหน้า) */}
+          <Navbar />
+
+          {/* 3. ✅ ใส่ padding-top (pt-24) เพื่อไม่ให้เนื้อหาถูก Navbar บัง */}
+          <main className="pt-24 min-h-screen">
+            {children}
+          </main>
         </CSPostHogProvider>
+        
       </body>
     </html>
   );
